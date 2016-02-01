@@ -1,15 +1,15 @@
 package com.example;
 
-import java.util.Arrays;
-import javafx.application.Application;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.context.web.SpringBootServletInitializer;
-import org.springframework.context.ApplicationContext;
+
+
+
 
 @SpringBootApplication
 public class DemoApplication {
+
+  
 
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
@@ -28,4 +28,6 @@ public class DemoApplication {
         }
 
     }*/
+
+     
 }

@@ -29,6 +29,10 @@ public class GreetingController {
     @RequestMapping("/")
     public ModelAndView greeting(@RequestParam(value="name", required=false, defaultValue="World") String name, Model model) {
        // System.out.println("\n\n\n\n\n  "+prop+"\n\n\n\n\n\n");
-        return new ModelAndView("greeting").addObject("name", name);
+        ModelAndView mav= new ModelAndView("greeting");
+        mav.addObject("name", name);
+        mav.addObject("json1", new Greeting(11, template, template));
+        
+        return mav;
     }
 }
