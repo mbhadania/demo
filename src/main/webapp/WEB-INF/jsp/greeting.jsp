@@ -18,12 +18,9 @@
 <body>
 	<h1>Form</h1>
 
-       
-        
-       
-
         <form action="${pageContext.request.contextPath}/greeting" method="post" >
             <input name="id"  type="text"/>
+            <input name="content"  type="text"/>
             <input name="content"  type="text"/>
             <button type="submit">submit</button>
             

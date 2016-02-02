@@ -15,6 +15,6 @@
 	<h1>Results</h1>
     ${greeting.id}
     ${greeting.content}
-    <a href="/greeting">Submit another message</a>
+    
 </body>
 </html>
