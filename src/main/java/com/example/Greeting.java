@@ -11,28 +11,26 @@ package com.example;
  */
 public class Greeting {
 
-    private final long id;
+    private long id;
+    private String content;
 
-    @Override
-    public String toString() {
-        return "Greeting{" + "id=" + id + ", content=" + content + ", content2=" + content2 + '}';
-    }
-
-    
-    private final String content;
-    private final String content2;
-    
-    public Greeting(long id, String content, String content2) {
-        this.id = id;
-        this.content = content;
-        this.content2 = content2;
-    }
 
     public long getId() {
         return id;
     }
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public String getContent() {
         return content;
     }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+    
+    
+    
 }
