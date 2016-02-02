@@ -16,7 +16,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-	<h1>Form</h1>
+	<h1>Form f1</h1>
 
         <form action="${pageContext.request.contextPath}/greeting" method="post" >
             <input name="id"  type="text"/>
