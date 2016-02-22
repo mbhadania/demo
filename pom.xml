@@ -8,7 +8,7 @@
     <artifactId>demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
-
+    
     <name>demo</name>
     <description>Demo project for Spring Boot</description>
 
@@ -83,15 +83,7 @@
             
         </dependency>
         
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-jdbc</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-        </dependency>
+       
 	
     </dependencies>
     <build>
@@ -105,24 +97,5 @@
 	
         
         
-        
-        <profiles>
-    <profile>
-        <id>openshift</id>
-        <build>
-            <finalName>{APP_NAME}</finalName>
-            <plugins>
-                <plugin>
-                    <artifactId>maven-war-plugin</artifactId>
-                    <version>2.4</version>
-                    <configuration>
-                        <outputDirectory>webapps</outputDirectory>
-                        <warName>ROOT</warName>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </build>
-    </profile>
-  </profiles>
-    
+     
 </project>
