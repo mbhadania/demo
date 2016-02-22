@@ -33,6 +33,7 @@ public class GreetingController {
         //ModelAndView mav= new ModelAndView("greeting");
         //mav.addObject("greeting", new Greeting());
         //return mav;
+        //yo
     }
 
     @RequestMapping(value = "/greeting", method = RequestMethod.POST)
