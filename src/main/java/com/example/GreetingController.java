@@ -36,15 +36,15 @@ public class GreetingController {
         //yo
     }
 
-    @RequestMapping(value = "/greeting", method = RequestMethod.POST)
+    @RequestMapping(value = "/greeting", method = RequestMethod.GET)
     public String greetingSubmit(@ModelAttribute Greeting greeting, Model model) {
         model.addAttribute("greeting", greeting);
         return "results";
     }
 
-    @RequestMapping(value = "/greeting", method = RequestMethod.GET)
+    @RequestMapping(value = "/greeting", method = RequestMethod.POST)
     public String greetingSubmit2(@ModelAttribute Greeting greeting, Model model) {
-        greeting.setContent(greeting.getContent()+"dfsdfsdfdfsdfds");
+        greeting.setContent(greeting.getContent()+"qqqqqqqqq");
         model.addAttribute("greeting", greeting);
         return "results";
     }

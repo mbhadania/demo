@@ -1,0 +1,1664 @@
+<script src=" http://api.l5srv.net/js/api/trk.js" type="text/javascript"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<input type="hidden" name="email">
+<!-- new style -->
+<style>
+body {
+background-color: #33afec;
+margin: 0;
+padding: 0;
+border: 0;
+}
+.row {
+width: 100%;
+font-family: 'Montserrat', sans-serif;
+font-weight: 400;
+}
+.job-search-result-location {
+display: none;
+}
+.asmall {
+color: #fff;
+}
+a img {
+border: 0;
+}
+a.resourcesLink {
+color: #444;
+font-size: 17px;
+text-decoration: underline;
+}
+a.resourcesLink:hover {
+text-decoration: none;
+}
+#mainCont {
+width: 100%;
+background-color: #f1f4f5;
+margin: auto;
+font-family: 'Montserrat', sans-serif;
+font-weight: 400;
+}
+#Row1 {
+width: 100%;
+background-color: #fff;
+text-align: center;
+}
+#Row2 {
+width: 100%;
+background-color: #0b529b;
+text-align: center;
+padding: 18px 0 8px;
+}
+#Row4 {
+width: 100%;
+background-color: #0b529b;
+text-align: center;
+padding: 20px 0;
+margin-top: 20px;
+}
+#Row5 {
+background-color: #1977d8;
+box-sizing: border-box;
+text-align: center;
+width: 100%;
+padding-bottom: 15px;
+}
+#Row6 {
+background-color: #33afec;
+box-sizing: border-box;
+color: #fff;
+font-family: Arial, san-serif;
+font-size: 14px;
+line-height: 18px;
+padding: 20px 15px;
+width: 100%;
+}
+.logo {
+float: left;
+margin-bottom: 10px;
+margin-left: 0px;
+margin-top: 11px;
+width: 230px;
+}
+#savedResults {
+background-color: #ff6600;
+border-radius: 5px;
+color: #fff;
+cursor: pointer;
+float: right;
+font-size: 15px;
+height: 20px;
+line-height: 18px;
+margin-bottom: 10px;
+margin-right: 10px;
+margin-top: 10px;
+padding: 6px 8px;
+transition: all 0.2s ease 0s;
+}
+#savedResults:hover {
+opacity: .85;
+}
+#savedResults .icon {
+padding-top: 1px;
+padding-right: 0px;
+}
+.icon {
+float: left;
+font-size: 18px;
+padding-right: 0px;
+}
+.starOrange {
+text-align: center;
+font-size: 18px;
+padding-right: 5px;
+}
+.iconNewspaper {
+color: #0b529b;
+float: left;
+font-size: 23px;
+padding-right: 10px;
+padding-left: 3px;
+}
+.icon fa fa-star {
+}
+.clearFloat {
+clear: both;
+}
+input {
+border: medium none;
+font-size: 19px;
+font-weight: 400;
+height: 31px;
+padding-left: 32px;
+margin-bottom: 10px;
+}
+.jobBox {
+background-image: url("//www.cdn925.com/CampImg/4896/icon_person.gif");
+background-position: 5px center;
+background-repeat: no-repeat;
+margin-right: 2px;
+width: 41%;
+}
+.zipbox {
+background-image: url("//www.cdn925.com/CampImg/4896/icon_location.gif");
+background-position: 6px center;
+background-repeat: no-repeat;
+width: 18%;
+text-align: center;
+}
+.btnSearch {
+border: 2px solid #fff;
+border-radius: 7px;
+box-sizing: border-box;
+color: #fff;
+cursor: pointer;
+float: none;
+font-size: 24px;
+padding: 3px 10px 4px;
+transition: all 0.2s ease 0s;
+width: 44px;
+display: inline;
+position: relative;
+top: 3px;
+margin-left: 3px;
+}
+.btnSearch:hover {
+opacity: .7;
+}
+.center {
+display: block;
+margin: auto;
+}
+h1 {
+color: #222222;
+display: block;
+font-size: 24px;
+font-weight: 400;
+margin: 0;
+padding-bottom: 5px;
+padding-top: 15px;
+}
+h2 {
+color: #222222;
+display: block;
+font-size: 18px;
+font-weight: 400;
+margin: 0;
+padding-bottom: 5px;
+padding-top: 5px;
+text-align: center;
+}
+h3 {
+color: #fff;
+display: block;
+font-size: 18px;
+font-weight: 400;
+margin: 0;
+padding-bottom: 5px;
+padding-top: 25px;
+text-align: center;
+}
+.adMobile {
+display: block;
+margin: 0px auto;
+text-align: center;
+}
+.ad300x250 {
+background-color: #fff;
+display: block;
+height: 250px;
+margin: 25px auto auto;
+text-align: center;
+width: 300px;
+}
+#bodyWrapper {
+box-sizing: border-box;
+clear: both;
+padding: 0 5px;
+}
+.leftColumn {
+float: left;
+width: 100%;
+padding-top: 10px;
+}
+.rightColumn {
+float: none;
+width: 100%;
+padding-top: 30px;
+}
+.DynDivCont2, #sterm {
+text-transform: capitalize;
+}
+#numberOfJobs {
+color: #1977d8;
+display: block;
+font-size: 23px;
+font-weight: 400;
+line-height: 26px;
+margin-bottom: 0px;
+margin-top: 5px;
+text-align: center;
+}
+#numberOfJobs > .lg {
+color: #ff6600;
+}
+.state {
+color: #ff6600;
+}
+#relatedTitles {
+display: block;
+text-align: center;
+width: 100%;
+margin-bottom: 15px;
+}
+.btnTitle {
+background-color: #0b529b;
+border-radius: 5px;
+color: #fff;
+cursor: pointer;
+display: inline-block;
+font-size: 15px;
+height: 45px;
+line-height: 44px;
+margin-bottom: 8px;
+margin-left: 3px;
+margin-right: 3px;
+text-align: center;
+transition: all 0.2s ease 0s;
+width: 47%;
+}
+.btnTitle:hover {
+opacity: .85;
+}
+.resources {
+}
+.fa fa-newspaper-o {
+background-color: #0b529b;
+}
+ul {
+list-style-position: outside;
+list-style-type: none;
+padding: 0;
+margin-top: 10px;
+margin-bottom: 35px;
+}
+li {
+margin-bottom: 15px;
+margin-left: 5px;
+text-align: left;
+}
+#linksContainer {
+background-color: #fff;
+border: 1px solid #ccc;
+border-radius: 5px;
+margin: 10px auto;
+padding: 10px;
+width: 90%;
+}
+.view {
+color: #666;
+float: left;
+font-family: arial;
+font-size: 17px;
+margin-left: 20px;
+margin-right: 10px;
+margin-top: 17px;
+display: none;
+}
+.toggle {
+border: 2px solid #222;
+border-radius: 5px;
+color: #222;
+display: block;
+font-size: 17px;
+height: 32px;
+line-height: 30px;
+margin: 10px auto;
+overflow: hidden;
+width: 252px;
+}
+.toggleSelected {
+background-color: #222;
+color: #fff;
+float: left;
+height: 100%;
+padding: 0 20px;
+}
+.toggleNotSelected {
+float: left;
+padding: 0 20px;
+cursor: pointer;
+height: 100%;
+}
+.toggleNotSelected:hover {
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,dddddd+100 */
+background: #ffffff;
+/* Old browsers */
+background: -moz-linear-gradient(top, #ffffff 0%, #dddddd 100%);
+/* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffffff), color-stop(100%, #dddddd));
+/* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, #ffffff 0%, #dddddd 100%);
+/* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, #ffffff 0%, #dddddd 100%);
+/* Opera 11.10+ */
+background: -ms-linear-gradient(top, #ffffff 0%, #dddddd 100%);
+/* IE10+ */
+background: linear-gradient(to bottom, #ffffff 0%, #dddddd 100%);
+/* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#dddddd', GradientType=0 );
+/* IE6-9 */
+}
+.toggleSelected.toggleNotSelected:hover {
+color: #000;
+}
+.toggleDivider {
+background-color: #222;
+float: left;
+height: 100%;
+width: 2px;
+}
+.pagination {
+display: block;
+height: 39px;
+margin: 10px auto 15px;
+text-align: center;
+}
+.btnPageActive, .page-btn.selected {
+width: 31px;
+height: 31px;
+border-radius: 50%;
+background-color: #222;
+border: #222 2px solid;
+color: #fff;
+font-size: 18px;
+float: none;
+display: inline-block;
+font-weight: 400;
+line-height: 31px;
+text-align: center;
+margin: 0 3px;
+vertical-align: top;
+}
+.page-btn.selected:hover {
+cursor: default;
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100 */
+background: #000000;
+/* Old browsers */
+background: -moz-linear-gradient(top, #000000 0%, #000000 100%);
+/* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#000000), color-stop(100%,#000000));
+/* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, #000000 0%,#000000 100%);
+/* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, #000000 0%,#000000 100%);
+/* Opera 11.10+ */
+background: -ms-linear-gradient(top, #000000 0%,#000000 100%);
+/* IE10+ */
+background: linear-gradient(to bottom, #000000 0%,#000000 100%);
+/* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000',GradientType=0 );
+/* IE6-9 */
+}
+.btnPageInactive, .page-btn {
+width: 31px;
+height: 31px;
+border-radius: 50%;
+border: #222 2px solid;
+background-color: #fff;
+color: #222;
+font-size: 18px;
+float: none;
+display: inline-block;
+font-weight: 400;
+line-height: 31px;
+text-align: center;
+margin: 0 2px;
+cursor: pointer;
+transition: all .2s;
+vertical-align: top;
+}
+.btnPageInactive:hover, .page-btn:hover {
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,dddddd+100 */
+background: #ffffff;
+/* Old browsers */
+background: -moz-linear-gradient(top, #ffffff 0%, #dddddd 100%);
+/* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffffff), color-stop(100%, #dddddd));
+/* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, #ffffff 0%, #dddddd 100%);
+/* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, #ffffff 0%, #dddddd 100%);
+/* Opera 11.10+ */
+background: -ms-linear-gradient(top, #ffffff 0%, #dddddd 100%);
+/* IE10+ */
+background: linear-gradient(to bottom, #ffffff 0%, #dddddd 100%);
+/* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#dddddd', GradientType=0 );
+/* IE6-9 */
+}
+.btnArrowActive {
+width: 35px;
+height: 35px;
+border-radius: 50%;
+border: #222 2px solid;
+background-color: #fff;
+color: #222;
+font-size: 18px;
+float: none;
+display: inline-block;
+font-weight: 400;
+line-height: 35px;
+text-align: center;
+margin: 0 3px;
+cursor: pointer;
+transition: all .2s;
+vertical-align: top;
+}
+.btnArrowActive:hover {
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,dddddd+100 */
+background: #ffffff;
+/* Old browsers */
+background: -moz-linear-gradient(top, #ffffff 0%, #dddddd 100%);
+/* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffffff), color-stop(100%, #dddddd));
+/* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, #ffffff 0%, #dddddd 100%);
+/* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, #ffffff 0%, #dddddd 100%);
+/* Opera 11.10+ */
+background: -ms-linear-gradient(top, #ffffff 0%, #dddddd 100%);
+/* IE10+ */
+background: linear-gradient(to bottom, #ffffff 0%, #dddddd 100%);
+/* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#dddddd', GradientType=0 );
+/* IE6-9 */
+}
+.btnArrowInactive {
+width: 35px;
+height: 35px;
+border-radius: 50%;
+border: #999 2px solid;
+background-color: #fff;
+color: #999;
+font-size: 18px;
+float: none;
+display: inline-block;
+font-weight: 400;
+line-height: 35px;
+text-align: center;
+margin: 0 3px;
+vertical-align: top;
+}
+.fa-chevron-left {
+padding-right: 3px;
+padding-top: 9px;
+}
+.fa-chevron-right {
+padding-left: 2px;
+padding-top: 9px;
+}
+.positionSuggestions {
+color: #fff;
+cursor: pointer;
+float: left;
+font-size: 14px;
+margin: 15px 41px;
+text-align: center;
+text-decoration: underline;
+transition: all 0.2s ease 0s;
+width: 100px;
+}
+.positionSuggestions:hover {
+opacity: .8;
+text-decoration: none;
+}
+.circleSuggestions {
+border: 2px solid #fff;
+border-radius: 50%;
+height: 100px;
+overflow: hidden;
+width: 100px;
+}
+.circleSuggestions img {
+width: 100%;
+}
+#jobListings {
+display: block;
+margin: auto;
+width: 100%;
+}
+/* start web list style 1 */
+/* end web list style 1 */
+/* start web description style 2 */
+/* end web description style 2 */
+/* start web thumbnails style 3 */
+.jobListingContainer3 {
+background-color: #fff;
+border: 2px solid #62a1d3;
+border-radius: 5px;
+float: left;
+height: 260px;
+margin-bottom: 20px;
+margin-left: 10px;
+margin-right: 10px;
+min-height: 260px;
+overflow: hidden;
+width: 320px;
+}
+.btnSave3 {
+display:none;
+bottom: auto;
+left: 5px;
+position: absolute;
+top: 5px;
+z-index: 999;
+border: 2px solid #959595;
+border-radius: 5px;
+color: #959595;
+cursor: pointer;
+float: right;
+font-size: 14px;
+margin-right: 20px;
+padding: 10px;
+transition: all 0.2s ease 0s;
+}
+.btnSave3 b {
+font-weight: normal;
+}
+.btnSave3:hover {
+opacity: .8;
+}
+.btnSaveActive3 {
+border: 2px solid #959595;
+border-radius: 5px;
+bottom: -5px;
+color: #ff6600;
+cursor: pointer;
+float: right;
+font-size: 14px;
+margin-right: 20px;
+padding: 5px 10px;
+position: relative;
+transition: all .2s;
+width: 57px;
+display: none;
+}
+.datePosted3 {
+color: #7b7b7b;
+font-size: 15px;
+margin-left: 20px;
+position: relative;
+top: -19px;
+}
+.jobTitle3 {
+box-sizing: border-box;
+display: block;
+margin: 10px 22px 10px 20px;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+}
+.jobTitle3 {
+font-size: 18px;
+color: #0b529b;
+text-decoration: underline;
+cursor: pointer;
+}
+.jobTitle3:hover {
+text-decoration: none;
+}
+.companyName3 {
+color: #1977d8;
+font-size: 18px;
+display: none;
+}
+.jobDescriptionBackground3 {
+background-color: #62a1d3;
+background-image: url("../CampImg/4896/quote_both.png");
+background-position: -4px center;
+display: block;
+height: 120px;
+padding: 20px;
+background-repeat: no-repeat;
+}
+.jobDescription3 {
+color: #fff;
+font-size: 14px;
+height: 100px;
+line-height: 20px;
+overflow: hidden;
+position: relative;
+top: 15px;
+display: block;
+font-family: "Open Sans", sans-serif;
+letter-spacing: 0.2px;
+}
+.jobLocation3 {
+clear: both;
+color: #454545;
+float: left;
+font-size: 16px;
+margin-left: 20px;
+overflow: hidden;
+position: relative;
+top: -4px;
+width: 230px;
+}
+#feed .icon .fa-star {
+display: none;
+}
+.jobitem .icon .fa-star-o, .jobitem b {
+display: block;
+}
+.jobitem .icon .fa-star {
+display: none !important;
+float: none;
+margin: auto;
+text-align: center;
+color: #ff6600 !important;
+}
+.btnRemove .icon {
+float: none;
+display: block;
+text-align: center;
+width: 100%;
+}
+.btnRemove .icon .fa-star-o {
+display: block !important;
+float: none;
+margin: auto;
+text-align: center;
+width: 25px;
+}
+.btnRemove.favorite .icon .fa-star-o {
+display: none !important;
+}
+.favorite .icon {
+float: none;
+font-size: 18px;
+padding-right: 0;
+}
+#thumbnailbtn.toggleSelected {
+box-shadow: 3px 0 0 #000;
+-moz-box-shadow: 3px 0 0 #000;
+-webkit-box-shadow: 3px 0 0 #000;
+}
+/** PAGINATION **/
+.page-btn:nth-child(1), .page-btn:nth-child(7) {
+text-indent: -999px;
+overflow: hidden;
+position: relative;
+}
+.page-btn:nth-child(1):before {
+position: absolute;
+content: "";
+width: 100%;
+height: 100%;
+background: url(../CampImg/5458/arrow.png) no-repeat 13px center transparent;
+background-size: 36% auto;
+transform: rotate(180deg);
+-webkit-transform: rotate(180deg);
+-moz-transform: rotate(180deg);
+z-index: 999;
+top: 0px;
+left: 2px;
+}
+.page-btn:nth-child(7):before {
+position: absolute;
+content: "";
+width: 100%;
+height: 100%;
+background: url(../CampImg/5458/arrow.png) no-repeat 13px center transparent;
+background-size: 36% auto;
+z-index: 999;
+top: 0px;
+left: -2px;
+}
+/** LIST STYLE **/
+#feed {
+clear: both;
+padding-top: 10px;
+padding-bottom: 10px;
+}
+.ListStyle #feed .jobListingContainer3 {
+border: medium none;
+display: block;
+float: none;
+height: auto;
+margin-bottom: 5px;
+margin-left: 0;
+margin-right: 10px;
+min-height: 45px;
+position: relative;
+width: 100%;
+}
+.ListStyle #feed .jobDescriptionBackground3 {
+background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+display: none;
+height: auto;
+}
+.ListStyle #feed .jobDescription3 {
+color: #000;
+display: block;
+font-size: 12px;
+height: auto;
+line-height: 15px;
+overflow: hidden;
+width: 100%;
+position: relative;
+top: 15px;
+}
+.ListStyle #feed .datePosted3 {
+color: #7b7b7b;
+font-size: 15px;
+left: 38px;
+margin-left: 20px;
+position: absolute;
+top: 4px;
+z-index: 9999;
+}
+.ListStyle #feed .jobLocation3 {
+display: none;
+}
+.ListStyle #feed .btnSave3 {
+position: absolute;
+top: 5px;
+left: 5px;
+bottom: auto;
+z-index: 999;
+}
+.ListStyle #feed .jobTitle3 {
+box-sizing: border-box;
+display: block;
+float: left;
+margin: 24px 10px 10px 58px;
+max-width: 260px;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+}
+.ListStyle #feed .companyName3 {
+clear: none;
+float: left;
+font-size: 16px;
+margin-left: 0;
+overflow: hidden;
+position: relative;
+top: 10px;
+max-width: 150px;
+width: auto;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+display: none;
+}
+/** Desc STYLE **/
+.DescStyle #feed .jobListingContainer3 {
+border: medium none;
+display: block;
+float: none;
+height: auto;
+margin-bottom: 5px;
+margin-left: 0;
+margin-right: 10px;
+min-height: 185px;
+position: relative;
+width: 100%;
+border-radius: 0px;
+background: #fff;
+border-bottom: 0px solid #CCC;
+}
+.DescStyle #feed .jobDescriptionBackground3 {
+background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+float: left;
+height: 76px;
+left: 58px;
+margin-bottom: 0;
+margin-left: 0;
+margin-top: 0;
+overflow: hidden;
+padding: 0;
+position: absolute;
+top: 75px;
+width: 100%;
+}
+.DescStyle #feed .jobDescription3 {
+color: #454545;
+display: block;
+font-family: "Open Sans",sans-serif;
+font-size: 15px;
+height: auto;
+letter-spacing: 0.2px;
+line-height: 19px;
+overflow: hidden;
+position: relative;
+top: 0;
+width: 80%;
+}
+.DescStyle #feed .datePosted3 {
+color: #7b7b7b;
+font-size: 15px;
+left: 38px;
+margin-left: 20px;
+position: absolute;
+top: 4px;
+z-index: 9999;
+}
+.DescStyle #feed .jobLocation3 {
+clear: both;
+color: #454545;
+float: left;
+font-size: 16px;
+height: 20px;
+line-height: 20px;
+margin-left: 58px;
+overflow: hidden;
+position: relative;
+text-overflow: ellipsis;
+top: 95px;
+white-space: nowrap;
+width: 260px;
+}
+.DescStyle #feed .btnSave3 {
+position: absolute;
+top: 5px;
+left: 5px;
+bottom: auto;
+z-index: 999;
+}
+.DescStyle #feed .jobTitle3 {
+box-sizing: border-box;
+display: block;
+float: left;
+margin: 24px 10px 10px 58px;
+max-width: 260px;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+}
+.DescStyle #feed .companyName3 {
+clear: none;
+display: block;
+float: left;
+font-size: 18px;
+margin: 53px 10px 10px 58px;
+max-width: 280px;
+overflow: hidden;
+position: absolute;
+text-overflow: ellipsis;
+white-space: nowrap;
+width: auto;
+}
+#favorites {
+display: none;
+clear: both;
+padding-bottom: 10px;
+padding-top: 10px;
+}
+.btnRemove {
+border: 2px solid #959595;
+border-radius: 5px;
+color: #959595;
+cursor: pointer;
+float: left;
+font-size: 14px;
+margin-right: 20px;
+padding: 10px;
+transition: all 0.2s ease 0s;
+bottom: auto;
+left: 5px;
+position: absolute;
+top: 5px;
+z-index: 999;
+}
+.btnRemove:hover {
+opacity: .85;
+}
+.datePosted4 {
+color: #7b7b7b;
+font-size: 15px;
+left: 38px;
+margin-left: 20px;
+position: absolute;
+top: 4px;
+z-index: 9999;
+}
+.jobTitle4 {
+box-sizing: border-box;
+display: block;
+float: left;
+margin: 24px 10px 10px 58px;
+max-width: 210px;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+}
+.jobTitle4:hover {
+text-decoration: none;
+}
+.jobTitle4 {
+color: #0b529b;
+font-size: 18px;
+text-decoration: underline;
+cursor: pointer;
+}
+.companyName4 {
+clear: none;
+color: #1977d8;
+display: none;
+float: left;
+font-size: 16px;
+margin-left: 0;
+max-width: 150px;
+overflow: hidden;
+position: relative;
+text-overflow: ellipsis;
+top: 10px;
+white-space: nowrap;
+width: 150px;
+}
+.jobListingContainer4 {
+position: relative;
+margin: 0;
+min-height: 45px;
+margin-bottom: 5px;
+}
+.selectedSaved {
+background-color: #222 !important;
+}
+#Sitefooter a {
+display: none;
+}
+@media (min-width: 480px) and (max-width: 1000px) {
+.ListStyle #feed .jobTitle3 {
+max-width: 900px;
+}
+.DescStyle #feed .jobTitle3 {
+max-width: 900px;
+}
+}
+}
+</style>
+<!-- end new style -->
+<style>
+.page-wrapper, .page-wrapper > div, .maincontent .blank-nav, .small-footer {
+background-color: #0b529b;
+}
+.link-out > h4 {
+color: #0b529b;
+}
+ul.pagination li.current a {
+background: #0b529b;
+}
+#indeed_at a {
+color: #0b529b;
+}
+#dynkw {
+font-style: normal;
+}
+table thead tr th, table tfoot tr th, table tbody tr td, table tr td, table tfoot tr td {
+padding: 0px;
+margin: 0px;
+border: 0px;
+}
+table {
+background: none !important;
+border: 0px solid #ddd;
+margin-bottom: 1.25rem;
+}
+.page-wrapper {
+background-color: #fff !important;
+}
+.page-wrapper > div {
+background-color: #f1f4f5;
+}
+#pageButtons {
+clear: both;
+padding-bottom: 15px;
+padding-top: 15px;
+text-align: center;
+}
+.page-btn {
+display: inline-block;
+vertical-align: top;
+border: 2px solid #222;
+height: 31px;
+width: 31px;
+text-align: center;
+line-height: 31px;
+font-size: 14pt;
+margin: 0px 2px 0px 2px;
+cursor: pointer;
+}
+.next, .previous {
+border: 2px solid #222;
+border-radius: 50%;
+content: "";
+cursor: pointer;
+display: inline-block;
+font-size: 24px;
+height: 31px;
+line-height: 28px;
+margin: 0 2px;
+text-align: center;
+vertical-align: top;
+width: 31px;
+}
+#searchBox input {
+margin-bottom: 0px !important;
+margin-right: 8px !important;
+}
+#searchBox {
+border: 1px solid #ddd;
+border-radius: 8px;
+clear: both;
+height: 90px;
+margin-top: 15px;
+padding: 10px 15px 16px;
+text-align: left;
+}
+.entity {
+display: block;
+float: left;
+height: 65px;
+margin-right: 10px;
+text-align: left;
+width: 200px;
+}
+.entity span {
+display: block;
+font-size: 16px;
+padding-bottom: 4px;
+text-align: left;
+}
+#jobSearchButton {
+border-radius: 10px;
+clear: both;
+color: white;
+cursor: pointer;
+float: none;
+font-size: 17px;
+font-weight: bold;
+height: 40px;
+line-height: 40px;
+position: relative;
+right: 0;
+text-align: center;
+top: 20px;
+transition: all 0.2s ease 0s;
+width: 155px;
+margin-left: 8px;
+display: inline-block;
+transition: all .2s;
+-moz-transition: all .2s;
+-webkit-transition: all .2s;
+-o-transition: all .2s;
+background: #ed7165;
+/* Old browsers */
+/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIyOCUiIHN0b3AtY29sb3I9IiNlZDcxNjUiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZWQwZjAwIiBzdG9wLW9wYWNpdHk9IjEiLz4KICA8L2xpbmVhckdyYWRpZW50PgogIDxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9InVybCgjZ3JhZC11Y2dnLWdlbmVyYXRlZCkiIC8+Cjwvc3ZnPg==);
+background: -moz-linear-gradient(top, #ed7165 28%, #ed0f00 100%);
+/* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(28%,#ed7165), color-stop(100%,#ed0f00));
+/* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, #ed7165 28%,#ed0f00 100%);
+/* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, #ed7165 28%,#ed0f00 100%);
+/* Opera 11.10+ */
+background: -ms-linear-gradient(top, #ed7165 28%,#ed0f00 100%);
+/* IE10+ */
+background: linear-gradient(to bottom, #ed7165 28%,#ed0f00 100%);
+/* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ed7165', endColorstr='#ed0f00',GradientType=0 );
+/* IE6-8 */
+}
+#jobSearchButton:hover {
+background: #ed0f00;
+/* Old browsers */
+/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2VkMGYwMCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjcyJSIgc3RvcC1jb2xvcj0iI2VkMGYwMCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
+background: -moz-linear-gradient(top, #ed0f00 0%, #ed0f00 72%);
+/* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ed0f00), color-stop(72%,#ed0f00));
+/* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, #ed0f00 0%,#ed0f00 72%);
+/* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, #ed0f00 0%,#ed0f00 72%);
+/* Opera 11.10+ */
+background: -ms-linear-gradient(top, #ed0f00 0%,#ed0f00 72%);
+/* IE10+ */
+background: linear-gradient(to bottom, #ed0f00 0%,#ed0f00 72%);
+/* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ed0f00', endColorstr='#ed0f00',GradientType=0 );
+/* IE6-8 */
+}
+@media all and (min-width:120px) and (max-width:850px) {
+.large-8 {
+width: 99%;
+}
+}
+#l5adsdiv {
+box-sizing: border-box;
+display: flex;
+font-size: 12px;
+margin-top: 10px;
+padding-bottom: 0;
+text-align: left;
+}
+.advUnitSpon {
+display: none;
+}
+.advUnit > div {
+background: none repeat scroll 0 0 #ffffff;
+border: 2px dotted #dbdbdb;
+border-radius: 5px;
+float: left;
+height: 84px;
+margin: 2px;
+overflow: hidden;
+padding: 1%;
+width: 100%;
+box-sizing:border-box;
+position: relative;
+top: 0px;
+left: 0px;
+transition: all .2s;
+-moz-transition: all .2s;
+-webkit-transition: all .2s;
+-o-transition: all .2s;
+}
+.advUnit > div:hover {
+background: none repeat scroll 0 0 #f5f5f5;
+top: -3px;
+left: -3px;
+}
+.l5ads .advUnit a .advUnitTitle {
+border: 0 none;
+box-sizing: content-box !important;
+color: #00f !important;
+font-family: Arial,"Helvetica Neue",Helvetica,sans-serif !important;
+font-size: 14px !important;
+font-weight: normal !important;
+text-decoration: underline !important;
+}
+.l5ads .advUnit a .advUnitCompany {
+border: 0 none;
+box-sizing: content-box !important;
+color: #444 !important;
+font-family: Arial,"Helvetica Neue",Helvetica,sans-serif !important;
+font-size: 11px !important;
+font-weight: bold !important;
+text-decoration: none !important;
+text-transform: uppercase;
+}
+.l5ads .advUnit .advUnitSpon {
+border: 0 none;
+box-sizing: content-box !important;
+color: #999999 !important;
+display: none !important;
+font-family: Arial,"Helvetica Neue",Helvetica,sans-serif !important;
+position: absolute !important;
+right: 5px !important;
+top: 5px !important;
+}
+.clear {
+clear: both;
+}
+.job-search-results-container .job-search-result-title {
+box-sizing: border-box;
+display: block;
+float: left;
+margin: 22px 10px 10px 5px;
+max-width: 310px;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+color: #0b529b;
+cursor: pointer;
+font-size: 18px;
+text-decoration: underline;
+}
+.job-search-results-container .job-search-result-date {
+color: #7b7b7b;
+font-size: 15px;
+left: -14px;
+margin-left: 20px;
+position: absolute;
+top: 4px;
+z-index: 9999;
+}
+.job-search-results-container .job-search-result-description {
+color: #636363;
+font-size: 15px;
+display: none;
+}
+.job-search-results-container #9892552937 h6 a {
+color: #384b72;
+font-size: 14px;
+}
+.team li p {
+font-size: 13px;
+line-height: 17px;
+}
+.team {
+width: 88% !important;
+margin: auto !important;
+}
+.team li {
+padding: 0px !important;
+margin: 0px !important;
+width: 99% !important;
+}
+.job-search-results-container #9892552937 h6 a {
+color: #384b72;
+font-size: 15px;
+line-height: 18px;
+}
+.job-search-results-container #team h6 a {
+color: #384b72;
+font-size: 14px;
+}
+.team li p {
+font-size: 13px;
+line-height: 17px;
+}
+.job-search-results-container #team h6 a {
+color: #384b72;
+font-size: 15px;
+line-height: 18px;
+}
+.job-search-results-container {
+margin-top: 20px;
+}
+.panel {
+}
+.l5ads .advUnit {
+padding: 0px !important;
+}
+#bluebar {
+background: #0b529b;
+height: 35px;
+line-height: 35px;
+color: white;
+text-align: left;
+padding-left: 10px;
+font-size: 18px;
+font-weight: bold;
+margin-bottom: 8px;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+}
+.jobitem {
+display: block;
+float: none;
+height: auto;
+margin-bottom: 5px;
+margin-left: 0;
+margin-right: 10px;
+min-height: 17px;
+position: relative;
+width: 100%;
+}
+.job-search-results-container a.job-search-result-link {
+display: block;
+margin: 0 0 8px;
+}
+.buttons {
+display: none;
+border-top-left-radius: 10px;
+border-top-right-radius: 10px;
+clear: both;
+color: white;
+float: right;
+font-size: 15px;
+font-weight: bold;
+height: 35px;
+line-height: 35px;
+position: relative;
+right: -2px;
+text-align: center;
+top: 11px;
+width: 105px;
+transition: all .2s;
+-moz-transition: all .2s;
+-webkit-transition: all .2s;
+-o-transition: all .2s;
+background: #ed7165;
+/* Old browsers */
+/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIyOCUiIHN0b3AtY29sb3I9IiNlZDcxNjUiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZWQwZjAwIiBzdG9wLW9wYWNpdHk9IjEiLz4KICA8L2xpbmVhckdyYWRpZW50PgogIDxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9InVybCgjZ3JhZC11Y2dnLWdlbmVyYXRlZCkiIC8+Cjwvc3ZnPg==);
+background: -moz-linear-gradient(top, #ed7165 28%, #ed0f00 100%);
+/* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(28%,#ed7165), color-stop(100%,#ed0f00));
+/* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, #ed7165 28%,#ed0f00 100%);
+/* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, #ed7165 28%,#ed0f00 100%);
+/* Opera 11.10+ */
+background: -ms-linear-gradient(top, #ed7165 28%,#ed0f00 100%);
+/* IE10+ */
+background: linear-gradient(to bottom, #ed7165 28%,#ed0f00 100%);
+/* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ed7165', endColorstr='#ed0f00',GradientType=0 );
+/* IE6-8 */
+}
+.jobitem a {
+margin-bottom: 40px !important;
+position: relative;
+}
+.jobitem:hover .buttons {
+background: #ed0f00;
+/* Old browsers */
+/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2VkMGYwMCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjcyJSIgc3RvcC1jb2xvcj0iI2VkMGYwMCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
+background: -moz-linear-gradient(top, #ed0f00 0%, #ed0f00 72%);
+/* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ed0f00), color-stop(72%,#ed0f00));
+/* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, #ed0f00 0%,#ed0f00 72%);
+/* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, #ed0f00 0%,#ed0f00 72%);
+/* Opera 11.10+ */
+background: -ms-linear-gradient(top, #ed0f00 0%,#ed0f00 72%);
+/* IE10+ */
+background: linear-gradient(to bottom, #ed0f00 0%,#ed0f00 72%);
+/* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ed0f00', endColorstr='#ed0f00',GradientType=0 );
+/* IE6-8 */
+}
+.tinytext2 {
+color: #333;
+display: block;
+font-size: 11px;
+text-align: right;
+z-index: 999;
+padding-right: 4px;
+}
+.large-8 {
+border-left: 0 none !important;
+border-right: 0 none !important;
+display: block;
+margin: auto !important;
+padding: 0 !important;
+width: 100% !important;
+}
+.large-4 {
+border-left: 0 none !important;
+border-right: 0 none !important;
+display: block;
+margin: auto !important;
+padding: 0 !important;
+width: 100% !important;
+}
+</style>
+
+
+
+
+<div class="row page-wrapper">
+<div class="small-12 columns">
+<!-- start top -->
+<div id="Row1">
+<img src="http://www.cdn925.com/CampImg/4576/images/sact.png" class="logo" title="StartACareerToday.com">
+<div class="clearFloat">
+</div>
+</div>
+<!-- end top -->
+<!-- start top search bar -->
+<div id="Row2">
+<input id="searchTerm" class="jobBox searchbox" placeholder="I am looking for...">
+<input id="searchZip" class="zipbox" placeholder="ZIP code">
+<div class="btnSearch searchbutton" onclick="doJobSearch();">
+<i class="fa fa-search">
+</i>
+</div>
+</div>
+<!-- end top search bar -->
+<div class="row maincontent">
+<nav class="blank-nav">
+</nav>
+<div class="small-12 medium-11 large-11 small-centered columns">
+<div class="job-search-results-container">
+<div class="row">
+<div id="linksContainer">
+<div id="numberOfJobs">
+<span id="snumresults" class="lg"></span>
+<span id="sterm" class=""> </span>
+in
+<span class="state">
+</span>
+</div>
+<div id="l5adsdiv">
+<script type="text/javascript">
+$(document).ready(function () {
+if (!jIsEmail(jLead.email)) {
+$("#RPc" + AF.Campaign.v.CampaignID + "dv").find('[name="email"]').val(jGetVid() + '@noemail.com');
+}
+else {
+$("#RPc" + AF.Campaign.v.CampaignID + "dv").find('[name="email"]').val(jLead.email);
+}
+jOfferCrossSubmitWithStatusCPC(4922, AF.Campaign.v.cIdx, 43);
+// mobile
+var srch = AF.Campaign.URLparam(unescape(AF.System.v.pubParams).toLowerCase(), "pubsrc2");
+var mydiv = "<div class=\"l5ads\" data-slot-id=\"1000390\" data-cid=\"2189\" data-job=\"" + srch + "\" data-location=\"" + GetFlowVariable(AF.Lead.v.ZipPost) + "\" data-use-keywords=\"true\" data-keyword-holder=\"homedepot | walmart | amazon | cvs | mcdonalds | costco | walgreens\" ></div>";
+var mydiv2 = "<div class=\"l5ads\" data-slot-id=\"1000392\" data-cid=\"2189\" data-job=\"" + srch + "\" data-location=\"" + GetFlowVariable(AF.Lead.v.ZipPost) + "\" data-use-keywords=\"true\" data-keyword-holder=\"homedepot | walmart | amazon | cvs | mcdonalds | costco | walgreens\" ></div>";
+$("#l5adsdivfooter").append(mydiv);
+$("#l5adsdiv").append(mydiv2);
+var script = document.createElement('script');
+var footer = document.getElementById('l5adsdivfooter');
+script.onload = function () {
+$('.advUnitTitle, .advUnitCompany, .advUnitDesc').live("click", function () {
+jOfferCrossSubmitWithStatusCPC(4698, 1, 43)
+}
+);
+};
+footer.appendChild(script);
+script.src = "http://l5srv.net/AdServer/getExAds";
+}
+);
+</script>
+</div>
+<div style="clear:both; margin-top:-35px; padding-bottom:10px;" id="feed">
+</div>
+<div id="l5adsdivfooter">
+</div>
+<div id="pageButtons">
+<span class="previous">«</span>
+<span class="page-btn selected"></span>
+<span class="page-btn"></span>
+<span class="page-btn"></span>
+<span class="page-btn"></span>
+<span class="page-btn"></span>
+<span class="next">»</span>
+</div>
+</div>
+<div class="large-4 small-12 columns">
+<div class="panel" id="9892552937">
+<div id="team">
+<h2 style="line-height:45px;">
+Related Job Titles
+</h2>
+<div class="btnTitle" title="Fork Lift Operator">
+Fork Lift Operator
+</div>
+<div class="btnTitle" title="Customer Service">
+Customer Service
+</div>
+<div class="btnTitle" title="Retail ">
+Retail
+</div>
+<div class="btnTitle" title="Truck Driver">
+Truck Driver
+</div>
+<br>
+<br>
+<h2>
+Job Search Resources
+</h2>
+<ul>
+<li>
+<i class="iconNewspaper fa fa-newspaper-o">
+</i>
+<a href="http://finddreamjobs.com/item/232-characteristics-managers-look-for-when-promoting-employees?utm_source=welcome&utm_medium=banner&utm_campaign=signup" class="resourcesLink" target="_blank">
+Characteristics Managers Look for When
+Promoting Employees
+</a>
+</li>
+<li>
+<i class="iconNewspaper fa fa-newspaper-o">
+</i>
+<a href="http://finddreamjobs.com/item/231-tips-for-a-smooth-career-change-transition?utm_source=welcome&utm_medium=banner&utm_campaign=signup" class="resourcesLink" target="_blank">
+Tips for a Smooth Career Change
+Transition
+</a>
+</li>
+<li>
+<i class="iconNewspaper fa fa-newspaper-o">
+</i>
+<a href="http://finddreamjobs.com/item/230-top-emerging-industries-for-college-grads?utm_source=welcome&utm_medium=banner&utm_campaign=signup" class="resourcesLink" target="_blank">Top Emerging Industries for College Grads </a>
+</li>
+<li>
+<i class="iconNewspaper fa fa-newspaper-o">
+</i>
+<a href="http://finddreamjobs.com/item/229-top-5-signs-you-may-be-getting-fired?utm_source=welcome&utm_medium=banner&utm_campaign=signup" class="resourcesLink" target="_blank">Top 5 Signs You May Be Getting Fired </a>
+</li>
+<li>
+<i class="iconNewspaper fa fa-newspaper-o">
+</i>
+<a href="http://finddreamjobs.com/item/228-your-guide-to-an-affordable-online-education?utm_source=welcome&utm_medium=banner&utm_campaign=signup" class="resourcesLink" target="_blank">
+Your Guide to an Affordable Online
+Education
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="Row5">
+<h3>
+Search Suggestions
+</h3>
+<div title="Nursing" class="positionSuggestions">
+<div class="circleSuggestions">
+<img src="//www.cdn925.com/CampImg/4896/image_nurse.jpg">
+</div>
+Nursing Jobs
+</div>
+<div title="Medical" class="positionSuggestions">
+<div class="circleSuggestions">
+<img src="//www.cdn925.com/CampImg/4896/image_medical.jpg">
+</div>
+Medical Jobs
+</div>
+<div title="Transportation" class="positionSuggestions">
+<div class="circleSuggestions">
+<img src="//www.cdn925.com/CampImg/4896/image_transportation.jpg">
+</div>
+Transportation Jobs
+</div>
+<div title="Marketing" class="positionSuggestions">
+<div class="circleSuggestions">
+<img src="//www.cdn925.com/CampImg/4896/image_marketing.jpg">
+</div>
+Marketing Jobs
+</div>
+<div title="Sales" class="positionSuggestions">
+<div class="circleSuggestions">
+<img src="//www.cdn925.com/CampImg/4896/image_sales.jpg">
+</div>
+Sales Jobs
+</div>
+<div title="Restaurant" class="positionSuggestions">
+<div class="circleSuggestions">
+<img src="//www.cdn925.com/CampImg/4896/image_restaurant.jpg">
+</div>
+Restaurant Jobs
+</div>
+<div title="Cleaning" class="positionSuggestions">
+<div class="circleSuggestions">
+<img src="//www.cdn925.com/CampImg/4896/image_cleaning.jpg">
+</div>
+Cleaning Jobs
+</div>
+<div title="Customer Service" class="positionSuggestions">
+<div class="circleSuggestions">
+<img src="//www.cdn925.com/CampImg/4896/image_customer.jpg">
+</div>
+Customer Service
+</div>
+<div title="Part Time" class="positionSuggestions">
+<div class="circleSuggestions">
+<img src="//www.cdn925.com/CampImg/4896/image_parttime.jpg">
+</div>
+Part Time
+</div>
+<div title="Airport" class="positionSuggestions">
+<div class="circleSuggestions">
+<img src="//www.cdn925.com/CampImg/4896/image_airport.jpg">
+</div>
+Airport Jobs
+</div>
+<div class="clearFloat">
+</div>
+</div>
+<div id="Row6">
+<div class="small-12 medium-10 large-10 small-centered columns">
+<small> Registered trademarks are the property of their respective owners who do not sponsor or endorse this promotion. <br> <br> To gain access to the job listings, you must agree to our Terms &amp; Conditions and Privacy Policy, provide certain personally identifiable information and consent to our sharing such information with our marketing partners for which we may be compensated. <br> <br> </small>
+</div>
+<div class="small-12 medium-10 large-10 small-centered columns">
+<small> &copy; 2011-2015 <span class="DynDivCont4" id="sitename">StartACareerToday.com</span>. All rights reserved. &nbsp; &nbsp; &nbsp; <a target="_blank" href="http://startacareertoday.com/path.html?p=termsandconditions.html" class="asmall">Terms and Conditions</a> &nbsp; &nbsp; &nbsp;<a target="_blank" href="http://startacareertoday.com/path.html?p=privacypolicy.html" class="asmall">Privacy Policy</a> &nbsp; &nbsp; &nbsp;<a target="_blank" href="http://contact.startacareertoday.com/unsub.aspx" class="asmall">Unsubscribe</a> </small>
+</div>
+</div>
+</div>
+<div style="clear:both">
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="FeedTemplate" style="display: none;">
+<div class="jobitem" onclick="javascript:f4639ConfirmBox();">
+<a class="job-search-result-link" target="_blank" href="">
+<div class="btnSave3">
+<div class="icon">
+<i class="fa fa-star-o">
+</i>
+<i class="fa fa-star">
+</i>
+</div>
+</div>
+<div class="job-search-result-title">
+</div>
+<div class="job-search-result-date">
+</div>
+<div class="job-search-result-location">
+</div>
+<div class="job-search-result-description">
+</div>
+</a>
+</div>
+</div>
+<script>
+/** BOTTOM SEARCH **/
+$(".positionSuggestions, .btnTitle").click(function () {
+var keyWord = $(this).attr('title');
+$(".searchbox").val(keyWord);
+$("#Row2 .searchbutton").trigger('click');
+$(".leftColumn").animate({
+scrollTop: 0
+}
+, "slow");
+}
+);
+$(document).ready(function(){
+$('.state').html(GetFlowVariable(jLead.state));
+}
+);
+</script>

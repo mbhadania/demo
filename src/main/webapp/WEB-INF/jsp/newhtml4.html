@@ -1,0 +1,915 @@
+<link href="../CampImg/2196/dynamicwebmobile/css/vsstyle.css" rel="stylesheet" type="text/css" />
+<link href="../CampImg/2196/dynamicwebmobile/css/4mstyle.css" rel="stylesheet" type="text/css" />
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600,300italic'
+rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,500,300,900,400italic'
+rel='stylesheet' type='text/css'>
+<meta content="minimum-scale=1.0, width=device-width, maximum-scale=0.6667, user-scalable=no"
+name="viewport">
+<script type="text/javascript">
+function showhideversion(count) {
+$("#vsquestion").hide();
+$("#fmquestion").hide();
+$("#step0").hide();
+$("#step1").show();
+$("html, body").animate({
+scrollTop: 0
+}
+, "slow");
+}
+</script>
+<script type="text/javascript">
+var myvowel = "";
+var Reward_Flow = "";
+var myoffertype = "";
+var rewardObj;
+$(document).ready(function () {
+changeLogo();
+}
+);
+function initAfterFlowJS() {
+defReward();
+BackMagic();
+Reward_Flow = AF.Campaign.URLparam(unescape(AF.System.v.pubParams).toLowerCase(), "reward");
+if (Reward_Flow == "") Reward_Flow = "undefined";
+$.getJSON('/Services/GetRewardValue.ashx?c=1&Value=' + Reward_Flow, function (data) {
+rewardObj = data;
+if (!rewardObj) {
+$.getJSON('/Services/GetRewardValue.ashx?c=1&Value=undefined', function (data) {
+rewardObj = data;
+renderPage(rewardObj);
+}
+);
+}
+else {
+renderPage(rewardObj);
+}
+}
+);
+}
+function renderPage(rewardObj) {
+myoffertype = rewardObj[0].cidxtype;
+$("body").addClass(rewardObj[0].newcss);
+if (myoffertype == 'NChoice') {
+var im1 = '<img src="' + rewardObj[0].pubsrc1 + '" alt="" />';
+$(".DynDivCont2").html(rewardObj[0].pubsrc2);
+$("#dyntext3").html(rewardObj[0].pubsrc2);
+$(".DynDivCont1").html(im1);
+$(".dyqn").html(rewardObj[0].Q1);
+$(".vowel").html(rewardObj[0].vowel);
+if (rewardObj[0].dydisclaimertext != "nop") {
+$("#dydisclaimertext").html(rewardObj[0].dydisclaimertext);
+$('#dydisclaimertext').show();
+}
+var temp = "&pubsrc1=" + rewardObj[0].pubsrc1 + "&pubsrc2=" + rewardObj[0].pubsrc2;
+$("#RPc2196dv").find('[name="iPage"]').val(temp);
+AF.System.v.pubParams += temp;
+return true;
+}
+else if (myoffertype == '2Choice') {
+$("#cmainwrap").attr('class', 'vscreative');
+var image1 = '<img src="' + rewardObj[0].image1 + '" alt="" />';
+var image2 = '<img src="' + rewardObj[0].image2 + '" alt="" />';
+$(".c2DynDivimg1").html(image1);
+$(".c2DynDivimg2").html(image2);
+$(".c2vowel").html(rewardObj[0].vowel);
+if (rewardObj[0].dydisclaimertext != "nop") {
+$("#dydisclaimertext").html(rewardObj[0].dydisclaimertext);
+$('#dydisclaimertext').show();
+}
+$(".customheader").html(rewardObj[0].customheader);
+$("#2choice1").find("img").attr('alt', rewardObj[0].header1);
+$("#2choice2").find("img").attr('alt', rewardObj[0].header2);
+}
+else if (myoffertype == '4Choice') {
+$("#cmainwrap").attr('class', 'fmcreative');
+var image1 = '<img src="' + rewardObj[0].image1 + '" alt="" />';
+var image2 = '<img src="' + rewardObj[0].image2 + '" alt="" />';
+var image3 = '<img src="' + rewardObj[0].image3 + '" alt="" />';
+var image4 = '<img src="' + rewardObj[0].image4 + '" alt="" />';
+$(".c4DynDivimg1").html(image1);
+$(".c4DynDivimg2").html(image2);
+$(".c4DynDivimg3").html(image3);
+$(".c4DynDivimg4").html(image4);
+$(".c2vowel").html(rewardObj[0].vowel);
+if (rewardObj[0].dydisclaimertext != "nop") {
+$("#dydisclaimertext").html(rewardObj[0].dydisclaimertext);
+$('#dydisclaimertext').show();
+}
+$(".customheader").html(rewardObj[0].customheader);
+$("#4choice1").find("img").attr('alt', rewardObj[0].header1);
+$("#4choice2").find("img").attr('alt', rewardObj[0].header2);
+$("#4choice3").find("img").attr('alt', rewardObj[0].header3);
+$("#4choice4").find("img").attr('alt', rewardObj[0].header4);
+}
+}
+function f2choiceselected(divid) {
+var myimage2 = $("#" + divid).find("img").attr('src');
+var myheader2 = $("#" + divid).find("img").attr('alt');
+$("#chosenimg").attr('src', myimage2);
+$(".DynDivCont2").html(myheader2);
+$("#dyntext3").html(myheader2);
+var myfinaliPage2 = "&pubsrc1=" + myimage2 + "&pubsrc2=" + myheader2;
+$("#RPc2196dv").find('[name="iPage"]').val(myfinaliPage2);
+AF.System.v.pubParams += escape(myfinaliPage2);
+}
+function f4choiceselected(divid) {
+var myimage4 = $("#" + divid).find("img").attr('src');
+var myheader4 = $("#" + divid).find("img").attr('alt');
+$("#chosenimg").attr('src', myimage4);
+$(".DynDivCont2").html(myheader4);
+$("#dyntext3").html(myheader4);
+var myfinaliPage4 = "&pubsrc1=" + myimage4 + "&pubsrc2=" + myheader4;
+$("#RPc2196dv").find('[name="iPage"]').val(myfinaliPage4);
+AF.System.v.pubParams += escape(myfinaliPage4);
+}
+function changeLogo() {
+var cursite = $(".DynDivCont5").html();
+if (cursite == "sap") {
+$("#ncc").hide();
+$("#sap").show();
+}
+else if (cursite == "pcu") {
+$("#ncc").hide();
+$("#pcu").show();
+}
+else if (document.URL.toLowerCase().indexOf("surveysandpromotions") > -1) {
+$("#ncc").hide();
+$("#sap").show();
+}
+else if (document.URL.toLowerCase().indexOf("promocenterusa") > -1) {
+$("#ncc").hide();
+$("#pcu").show();
+}
+else {
+$("#ncc").show();
+}
+}
+/* backMgc */
+window.onpopstate = function (event) {
+if (event.state) {
+location.reload();
+}
+};
+function supports_history_api() {
+return !!(window.history && history.pushState);
+}
+function BackMagic() {
+if (supports_history_api()) {
+var loc = location.href;
+//var pub_params = unescape(GetFlowVariable($("#FlowSQForm").find('[name="pubparams"]').val()));
+var pub_params = unescape(GetFlowVariable(AF.System.v.pubParams));
+var pubsrc = unescape($('input[name="iPage"]').val());
+if (pubsrc != null && pubsrc != undefined && pubsrc != "") {
+pub_params += pubsrc;
+}
+var tempgender = GetFlowVariable((jLead.gender == "True" ? "M" : (jLead.gender == "False" ? "F" : "")));
+history.replaceState({
+}
+, "BackMagic", "/reredirect.aspx?" + escape("https://www.promotionsandsweeps.com/default.aspx?Flow=A8152254-23ED-8E07-6275-BA24A4108BD6892C355F" + "&firstname=" +
+GetFlowVariable(jLead.firstname) + "&lastname=" +
+GetFlowVariable(jLead.lastname) + "&email=" +
+GetFlowVariable(jLead.email) + "&address=" +
+GetFlowVariable(jLead.address1) + "&city=" +
+GetFlowVariable(jLead.city) + "&state=" +
+GetFlowVariable(jLead.state) + "&zippost=" +
+GetFlowVariable(jLead.zippost) + "&gender=" +
+tempgender + "&phone=" +
+GetFlowVariable(jLead.phone) + "&dobday=" +
+GetFlowVariable(jLead.dobday) + "&dobmonth=" +
+GetFlowVariable(jLead.dobmonth) + "&dobyear=" +
+GetFlowVariable(jLead.dobyear) + "&affsecid=" +
+GetFlowVariable(jFlowCfg.FlowID) + "&EntranceVID=" +
+AF.Lead.v.EntranceVID + "&subaff=" +
+GetFlowVariable(AF.Flow.v.SubAff)
++ "&" + pub_params));
+history.pushState({
+}
+, document.title, loc);
+}
+}
+/* end backMgc */
+</script>
+<style type="text/css">
+body {
+margin: 0px;
+background-color: #d3d6db !important;
+}
+#chosenimg {
+margin: auto;
+max-width: 40%;
+max-height: 115px;
+}
+#ncc,
+#sap,
+#pcu {
+display: none;
+}
+#pplink {
+padding-top: 0px !important;
+}
+#q1,
+#q2,
+#q3,
+#q4,
+#q5 {
+text-align: center;
+}
+#q1,
+#q2,
+#q3,
+#q4 {
+padding-top: 8px;
+}
+.qnumber {
+color: #666666;
+display: block;
+font-size: 14px;
+font-weight: bold;
+line-height: 24px;
+margin: auto auto 7px;
+width: 320px;
+}
+.questions {
+color: #333;
+font-size: 22px;
+font-weight: bold;
+}
+.smaller {
+width: 110px;
+}
+#msgholder {
+height: 1px;
+margin: auto;
+position: relative;
+width: 100%;
+}
+#warning-msg {
+background: url("../CampImg/1718/continuebg.png") no-repeat scroll center top transparent;
+display: none;
+height: 44px;
+margin: auto;
+position: relative;
+text-align: center;
+top: 6px;
+width: 250px;
+background-size: 100% 100%;
+;
+}
+.collect {
+color: #1d3b7a !important;
+font-family: 'Roboto', sans-serif;
+font-size: 17px;
+font-weight: 400;
+text-align: center;
+}
+.cta_text {
+background: white !important;
+border-top: 0px !important;
+color: #c22026 !important;
+font-family: 'Roboto', sans-serif !important;
+font-size: 26px;
+font-weight: 700;
+line-height: 23px;
+}
+.pplink,
+.pplink a {
+color: #7e97cc !important;
+font-family: 'Roboto', sans-serif;
+font-size: 10px;
+font-style: italic;
+font-weight: 300;
+}
+#normalprize img {
+max-height: 130px;
+max-width: 168px;
+}
+.olof,
+.toptextdiv {
+color: #1d3b7a;
+font-family: 'Roboto', sans-serif;
+font-size: 30px;
+font-weight: bold;
+line-height: 33px;
+text-align: center;
+}
+#normalcta,
+#multiplecta {
+background: #fff;
+text-align: center;
+background-size: auto 74px;
+padding-top: 8px;
+}
+.pplink {
+display: block;
+text-align: center;
+padding-bottom: 6px;
+}
+#normalprize {
+background-color: white;
+text-align: center;
+padding-bottom: 8px;
+}
+body,
+#cmainwrap {
+background: #d3d6db !important;
+}
+#iterms,
+#iterms a {
+color: #979aa0 !important;
+font-family: 'Roboto', sans-serif;
+font-size: 11px;
+}
+.questions {
+color: #fff;
+font-size: 25px;
+font-weight: bold;
+display: block;
+text-align: center;
+margin: auto;
+font-family: 'Roboto', sans-serif;
+width: 231px;
+padding-bottom: 6px;
+line-height: 26px;
+padding-top: 6px;
+}
+#q3 .questions {
+color: #fff;
+font-size: 20px;
+font-weight: bold;
+display: block;
+text-align: center;
+margin: auto;
+font-family: 'Roboto', sans-serif;
+padding-bottom: 6px;
+width: 100%;
+line-height: 22px;
+}
+.qnumber {
+display: none;
+}
+.answerbtn {
+display: inline-block;
+box-shadow: 0 2px 1px #fff inset;
+-moz-box-shadow: 0 2px 1px #fff inset;
+-webkit-box-shadow: 0 2px 1px #fff inset;
+margin: 4px 4px;
+text-align: center;
+font-size: 30px;
+font-weight: 700;
+color: #1d3b7a;
+height: 42px;
+line-height: 42px;
+text-transform: uppercase;
+text-shadow: none !important;
+width: 274px;
+font-family: 'Roboto', sans-serif !important;
+border: 2px solid #1d3b7a;
+cursor: pointer;
+background-color: #d3d6db;
+position: relative;
+top: 0px;
+left: 0px;
+transition: all .2s;
+-moz-transition: all .2s;
+-webkit-transition: all .2s;
+-o-transition: all .2s;
+}
+.answerbtn.active {
+background: #f7f7f7;
+/* Old browsers */
+/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSI0MyUiIHN0b3AtY29sb3I9IiNmN2Y3ZjciIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZDBkMGQwIiBzdG9wLW9wYWNpdHk9IjEiLz4KICA8L2xpbmVhckdyYWRpZW50PgogIDxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9InVybCgjZ3JhZC11Y2dnLWdlbmVyYXRlZCkiIC8+Cjwvc3ZnPg==);
+background: -moz-linear-gradient(top, #d0d0d0 43%, #f7f7f7 100%);
+/* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(43%, #f7f7f7), color-stop(100%, #d0d0d0));
+/* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, #d0d0d0 43%, #f7f7f7 100%);
+/* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, #d0d0d0 43%, #f7f7f7 100%);
+/* Opera 11.10+ */
+background: -ms-linear-gradient(top, #d0d0d0 43%, #f7f7f7 100%);
+/* IE10+ */
+background: linear-gradient(to bottom, #d0d0d0 43%, #f7f7f7 100%);
+/* W3C */
+filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#f7f7f7', endColorstr='#d0d0d0', GradientType=0);
+/* IE6-8 */
+}
+.smaller {
+width: 115px !important;
+}
+.subtn {
+display: block;
+font-size: 32px;
+height: 45px;
+line-height: 45px;
+margin: 15px auto auto;
+text-transform: none;
+width: 276px;
+}
+#cmainwrap input {
+width: 260px;
+border: 0px solid #fff;
+padding: 7px;
+}
+#step1,
+#step2 {
+padding-top: 0px;
+}
+.qualifytext,
+.qualifytextTwo {
+background-color: white;
+text-align: center;
+font-size: 17px;
+font-weight: 600;
+color: #2c3e50;
+font-family: 'Roboto', sans-serif !important;
+padding-bottom: 6px;
+padding-top: 0px;
+}
+#pplink {
+display: block;
+line-height: 14px;
+margin: auto;
+padding-bottom: 5px;
+padding-top: 2px !important;
+position: relative;
+text-align: center;
+width: 320px;
+}
+#pplink img {
+position: absolute;
+top: 40px;
+left: 45px;
+width: 25px;
+}
+.qualifytextTwo {
+display: none;
+}
+.fmcreative .qualifytext,
+.vscreative .qualifytext,
+#multiplecta,
+#vsquestion,
+#fmquestion {
+display: none;
+}
+.fmcreative .qualifytextTwo,
+.vscreative .qualifytextTwo {
+display: block;
+}
+.fmcreative #fmquestion table td div,
+#vsquestion table td div {
+background-color: white;
+}
+#iterms {
+width: 93%;
+margin: auto;
+text-align: justify;
+}
+#dividiv {
+text-align: center;
+width: 100%;
+background: url(../CampImg/2196/unemp/shaperepeat.png) repeat-x center top #fff;
+background-size: auto 108%;
+margin-bottom: 0px;
+}
+.enterinfo {
+text-align: center;
+font-size: 19px;
+font-weight: normal;
+color: white;
+font-family: 'Roboto', sans-serif !important;
+display: block;
+padding-top: 10px;
+padding-bottom: 15px;
+}
+.earned {
+color: #ed3f10;
+display: block;
+font-family: 'Roboto', sans-serif;
+font-size: 24px;
+font-weight: bold;
+position: relative;
+text-align: center;
+top: 12px;
+}
+#greenqualify {
+position: relative;
+height: 55px;
+background: #fff;
+background-size: auto 100%;
+margin: auto;
+}
+#greenrepeat {
+background: #fff;
+height: 55px;
+background-size: auto 100%;
+}
+.qualifytext,
+.qualifytextTwo {
+background: url(../CampImg/2196/hat.png) no-repeat center top #fff;
+text-align: center;
+font-size: 14px;
+font-weight: 600;
+color: #fff;
+font-family: 'Roboto', sans-serif !important;
+margin: auto;
+width: 176px;
+height: 17px;
+line-height: 19px;
+padding-top: 0px;
+padding-bottom: 0px;
+text-decoration: underline;
+background-size: 100% auto;
+line-height: 29px;
+}
+#cmainwrap {
+text-align: center;
+}
+#cmainwrap input {
+width: 263px;
+border: 0px solid #fff;
+padding: 7px;
+display: block;
+margin: auto;
+margin-bottom: 8px;
+text-align: center;
+font-size: 21px;
+color: #373737;
+border-bottom-left-radius: 0px;
+border-bottom-right-radius: 0px;
+border-top-left-radius: 0px;
+border-top-right-radius: 0px;
+height: 32px;
+font-weight: bold;
+font-family: 'Roboto', sans-serif !important;
+}
+#toph {
+text-align: center;
+font-size: 16px;
+font-weight: bold;
+position: relative;
+height: 43px;
+background-color: #345599;
+color: white;
+line-height: 43px;
+font-family: 'Roboto', sans-serif !important;
+margin-bottom: 10px;
+}
+#toph img {
+position: absolute;
+top: 10px;
+right: 5px;
+width: 24px;
+}
+#step0 {
+background-color: #345599;
+width: 96%;
+box-sizing: border-box;
+border: 1px solid #bec1c6;
+overflow: hidden;
+border-bottom-left-radius: 4px;
+border-bottom-right-radius: 4px;
+border-top-left-radius: 4px;
+border-top-right-radius: 4px;
+padding-bottom: 15px;
+margin: auto;
+min-height: 465px;
+}
+#step1 {
+background-color: #345599;
+width: 96%;
+box-sizing: border-box;
+border: 1px solid #bec1c6;
+overflow: hidden;
+border-bottom-left-radius: 4px;
+border-bottom-right-radius: 4px;
+border-top-left-radius: 4px;
+border-top-right-radius: 4px;
+padding-bottom: 15px;
+margin: auto;
+min-height: 465px;
+}
+#termbox {
+background-color: #fff;
+width: 96%;
+box-sizing: border-box;
+border: 1px solid #bec1c6;
+overflow: hidden;
+border-bottom-left-radius: 4px;
+border-bottom-right-radius: 4px;
+border-top-left-radius: 4px;
+border-top-right-radius: 4px;
+padding-bottom: 15px;
+margin: auto;
+margin-top: 10px;
+}
+</style>
+<script type="text/javascript">
+function showhide(count) {
+if (count == 1) {
+$("#q1").hide();
+$("#q2").fadeIn(200);
+}
+if (count == 2) {
+$("#q2").hide();
+$("#q3").fadeIn(200);
+}
+}
+function change() {
+$("#q3").hide();
+$("#q4").fadeIn(400);
+setTimeout("lastPage()", 2500);
+}
+function lastPage() {
+$("#q4").hide();
+$("#step0").hide();
+$("#step1").show();
+setTimeout(function () {
+$("#fn").focus();
+$("html, body").animate({
+scrollTop: 0
+}
+, "slow");
+}
+, 500);
+}
+function showWarning(e) {
+$(e).animate({
+opacity: '.5'
+}
+, 300);
+$("#warning-msg").fadeIn(300);
+}
+function proceed() {
+if ($("#warning-msg").is(':visible')) {
+$("#18btn").animate({
+opacity: '1'
+}
+, 300);
+$("#warning-msg").hide();
+$("#semiloader").fadeIn(300);
+setTimeout(function () {
+showhide('2');
+}
+, 1000);
+}
+else {
+showhide('2');
+}
+}
+</script>
+<div id="toph">
+<script language="Javascript">
+<!--
+// Array of day names
+var dayNames = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
+// Array of month Names
+var monthNames = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+var now = new Date();
+document.write(dayNames[now.getDay()] + "'s");
+// -->
+</script>
+EXCLUSIVE Offer
+<img src="../CampImg/2196/throphy.png" />
+</div>
+<div id="cmainwrap">
+<!-- HIDDEN FIELDS -->
+<input type="hidden" name="iPage" value="" />
+<input type="hidden" name="header" value="" />
+<input type="hidden" name="fds" />
+<input type="hidden" name="mmm" value="" />
+<input name="phonecode" type="hidden" />
+<input name="phoneprefix" type="hidden" />
+<input name="phonesuffix" type="hidden" />
+<input name="dobday" type="hidden" />
+<input name="dobmonth" type="hidden" />
+<input name="dobyear" type="hidden" />
+<div id="step0">
+<!-- END HIDDEN FIELDS -->
+<!-- NORMAL CTA -->
+<div id="normalcta">
+<div class="collect">
+Collect 100 points & get
+<span class="vowel">a</span>
+</div>
+<span class="olof"><span class="DynDivCont2"></span>*</span>
+<div style="" class="pplink">
+Upon completion of purchase requirements.
+<a href="http://www.rewardzoneusa.com/path.html?p=CampImg/1300/terms.htm"
+target=" _blank">Click for details</a>
+</div>
+</div>
+<!-- END NORMAL -->
+<!-- MULTIPLE CTA -->
+<div id="multiplecta">
+<div class="collect">
+Collect 100 points & get
+<span class="c2vowel">the</span>
+</div>
+<div class="toptextdiv">
+<div class="toptexthold">
+<span class="customheader">Smartphone</span>
+*
+<span id="Span1">of your choice!</span>
+</div>
+</div>
+<div style="" class="pplink">
+Upon completion of purchase requirements.
+<a href="http://www.rewardzoneusa.com/path.html?p=CampImg/1300/terms.htm"
+target=" _blank">Click for details</a>
+</div>
+<center>
+<img src="../CampImg/2196/pending.png" width="135px" style="margin-bottom: 10px;" />
+</center>
+</div>
+<!-- HEADER GET TEXT:END -->
+<div id="normalprize" class="DynDivCont1">
+</div>
+<div id="dividiv">
+<div class="qualifytext">
+Check eligibility:
+</div>
+<div class="qualifytextTwo">
+Choose reward below:
+</div>
+</div>
+<!-- VS QUESTION -->
+<div id="vsquestion">
+<table cellspacing="0" cellpadding="0" border="0px" align="center">
+<tbody>
+<tr>
+<td>
+<div id="2choice1" onclick="showhideversion('1');f2choiceselected(this.id);" class="answerOne c2DynDivimg1">
+</div>
+</td>
+<td>
+<div id="2choice2" onclick="showhideversion('1');f2choiceselected(this.id);" class="answerTwo c2DynDivimg2">
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- 4+ MULTIPLE QUESTION -->
+<div id="fmquestion">
+<table cellspacing="0" cellpadding="0" border="0px" align="center">
+<tbody>
+<tr>
+<td>
+<div id="4choice1" onclick="showhideversion('1');f4choiceselected(this.id);" class="answerOne c4DynDivimg1">
+</div>
+</td>
+<td>
+<div id="4choice2" onclick="showhideversion('1');f4choiceselected(this.id);" class="answerTwo c4DynDivimg2">
+</div>
+</td>
+</tr>
+<tr>
+<td>
+<div id="4choice3" onclick="showhideversion('1');f4choiceselected(this.id);" class="answerOne c4DynDivimg3">
+</div>
+</td>
+<td>
+<div id="4choice4" onclick="showhideversion('1');f4choiceselected(this.id);" class="answerTwo c4DynDivimg4">
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- QUESTIONS -->
+<div id="q1">
+<span class="qnumber">Question 1 of 3</span>
+<div id="normalquestion">
+<span class="enterinfo">Complete your information:</span>
+<input type="text" class="holder" id="fn" placeholder="First Name" name="firstname" />
+<input type="text" class="holder" placeholder="Last Name" name="lastname" />
+<input type="email" class="holder" placeholder="Your Email" name="email" />
+<div onclick="javascript:confirm();" class="answerbtn subtn">
+Continue >>
+</div>
+</div>
+</div>
+<!-- Q2 -->
+<div id="q2" style="display: none;">
+<span class="qnumber">Question 2 of 3</span>
+<span class="questions">How old are you?
+</span>
+<table cellpadding="0" cellspacing="1" align="center" border="0px">
+<tbody>
+<tr>
+<td>
+<div id="18btn" onclick="javascript:showWarning(this);" class="answerbtn smaller">
+&lt;18
+</div>
+</td>
+<td>
+<div onclick="proceed();" class="answerbtn smaller">
+18-25
+</div>
+</td>
+</tr>
+<tr>
+<td>
+<div onclick="proceed();" class="answerbtn smaller">
+26-35
+</div>
+</td>
+<td>
+<div onclick="proceed();" class="answerbtn smaller">
+35+
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- WARNING -->
+<div id="msgholder">
+<div id="warning-msg">
+</div>
+<div id="semiloader" style="display: none">
+<center>
+<img id="btn4" src="../PathImg/21377/iphone4s/images/loading.gif" style="position: relative;
+top: 48px;" alt="" height="35" width="35">
+</center>
+</div>
+</div>
+<!-- WARNING END -->
+</div>
+<!-- Q3 -->
+<div id="q3" style="display: none;">
+<span class="qnumber">Question 3 of 3</span>
+<span class="questions">About how many
+times<br>
+do you go shopping per week? </span>
+<table cellpadding="0" cellspacing="1" align="center" border="0px">
+<tbody>
+<tr>
+<td>
+<div onclick="change();" class="answerbtn smaller">
+&lt;3
+</div>
+</td>
+<td>
+<div onclick="change();" class="answerbtn smaller">
+3-7
+</div>
+</td>
+</tr>
+<tr>
+<td>
+<div onclick="change();" class="answerbtn smaller">
+7-10
+</div>
+</td>
+<td>
+<div onclick="change();" class="answerbtn smaller">
+10+
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Q4 -->
+<div id="q4" style="display: none">
+<span class="qnumber">Calculating Eligibility</span>
+<br>
+<span class="questions">Please wait...</span>
+<br>
+<br>
+<img border="0" src="http://www.cdn925.com/CampImg/1718/grocery/loading.gif" style="width: 80px;">
+</div>
+<!-- END QUESTIONS -->
+</div>
+<!-- //////////////// STEPS DIVISION /////////////// -->
+<div id="step1" style="display: none;">
+<div id="greenrepeat">
+<div id="greenqualify">
+<span class="earned">
+<img src="../CampImg/2196/redcheck.png" width="25px" />
+Eligibility Confirmed. </span>
+</div>
+</div>
+<center>
+<img src="../CampImg/2196/whitearrow.png" width="35px" />
+</center>
+</div>
+<div id="termbox">
+<!-- TERMS -->
+<div id="iterms">
+<div style="display: none; padding-top: 10px; position: static; color: white; text-align: center;
+font-size: 11px; margin: auto;" id="dydisclaimertext">
+</div>
+<br />
+<br />
+<center>
+<img src="../CampImg/2196/nccblue.png" width="187px" style="display: block;">
+</center>
+<br />
+<br />
+##gterms##
+</div>
+</div>
+</div>

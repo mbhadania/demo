@@ -1,0 +1,67 @@
+<script type="text/javascript">
+
+
+    $("#RPc6261dv").find("input,textarea,select").not('input[type=hidden]').each(function () {
+        var inputVal = this.value;
+        var inputName = this.name;
+        if (inputName == "PHD") {
+            alter("welcome");
+        } else if (inputName == "email") {
+            inputVal = jCleanField(this);
+            if (inputVal.length == 0)
+                strErrorMsg += "Please enter email\n";
+            else if (!jIsEmail(inputVal))
+                strErrorMsg += "Please enter a valid email\n";
+        } else if (inputName == "firstname" && jCleanField(this).length == 0) {
+            strErrorMsg += "Please enter Your First Name\n";
+        } else if (inputName == "lastname" && jCleanField(this).length == 0) {
+            strErrorMsg += "Please enter Your Last Name\n";
+        } else if (inputName == "phonecode") {
+            inputVal = jCleanField(this);
+            if (inputVal.length == 0)
+                strErrorMsg += "Please enter phone code\n";
+            else if (isNaN(inputVal))
+                strErrorMsg += "Please enter numeric phone code\n";
+            else if (inputVal.length != 3)
+                strErrorMsg += "Please enter 3 digits phone code\n";
+        } else if (inputName == "phoneprefix") {
+            inputVal = jCleanField(this);
+            if (inputVal.length == 0)
+                strErrorMsg += "Please enter phone prefix\n";
+            else if (isNaN(inputVal))
+                strErrorMsg += "Please enter numeric phone prefix\n";
+            else if (inputVal.length != 3)
+                strErrorMsg += "Please enter 3 digits phone prefix\n";
+        } else if (inputName == "phonesuffix") {
+            inputVal = jCleanField(this);
+            if (inputVal.length == 0)
+                strErrorMsg += "Please enter phone suffix\n";
+            else if (isNaN(inputVal))
+                strErrorMsg += "Please enter numeric phone suffix\n";
+            else if (inputVal.length != 4)
+                strErrorMsg += "Please enter 4 digits phone suffix\n";
+        } else if (inputName == "address1" && jCleanField(this).length == 0) {
+            strErrorMsg += "Please enter address1\n";
+        } else if (inputName == "city" && jCleanField(this).length == 0) {
+            strErrorMsg += "Please enter City\n";
+        } else if (inputName == "state" && jCleanField(this).length == 0) {
+            strErrorMsg += "Please enter State\n";
+        } else if (inputName == "zippost" && jCleanField(this).length == 0) {
+            strErrorMsg += "Please enter Zip\n";
+        } else if (inputName == "dobmonth" && jCleanField(this).length == 0) {
+            strErrorMsg += "Please enter dob month\n";
+        }
+        else if (inputName == "dobday" && jCleanField(this).length == 0) {
+            strErrorMsg += "Please enter dob day\n";
+        }
+        else if (inputName == "dobyear" && jCleanField(this).length == 0) {
+            strErrorMsg += "Please enter dob year\n";
+        } else if (inputName == "fda" && jCleanField(this).length == 0) {
+            strErrorMsg += "Please enter Year\n";
+        } else if (inputName == "fdb" && jCleanField(this).length == 0) {
+            strErrorMsg += "Please enter Make\n";
+        }else if (inputName == "fdd" && jCleanField(this).length == 0) {
+            strErrorMsg += "Please enter Model\n";
+        }
+    });
+</script>
